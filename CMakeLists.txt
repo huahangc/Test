@@ -20,6 +20,17 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)   # 动态库 (.so)
 # 头文件搜索路径（项目根，让 #include "network/..." 生效）
 set(PROJECT_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
 
+# ============ 第三方依赖 ============
+# nng：进程内/跨进程 PUB/SUB 消息库（异步、多发布者/多订阅者）
+include(FetchContent)
+FetchContent_Declare(
+    nng
+    URL https://github.com/nanomsg/nng/archive/refs/tags/v1.8.0.tar.gz
+)
+set(NNG_TESTS OFF CACHE BOOL "" FORCE)
+set(NNG_TOOLS OFF CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(nng)
+
 # ============ 网络协议库（静态库，供可执行程序和测试共同链接） ============
 add_library(network STATIC
     network/l3/ipv6/ipv6.cpp
@@ -39,6 +50,15 @@ target_sources(util PRIVATE
 
 target_link_libraries(util PRIVATE network)
 
+# nng PUB/SUB 异步事件分发演示（1 发布者 → 2 订阅者）
+add_executable(pubsub_demo)
+
+target_sources(pubsub_demo PRIVATE
+    nng_pubsub_demo.cpp
+)
+
+target_link_libraries(pubsub_demo PRIVATE nng)
+
 # ============ 单元测试（doctest：单头文件，零依赖） ============
 include(CTest)   # 提供 BUILD_TESTING 选项，并集成 ctest
 
@@ -50,6 +70,8 @@ if(BUILD_TESTING)
     set(TEST_SOURCES
         test/test_ipv6.cpp
         test/test_mac_linklocal.cpp
+        test/test_event_bus.cpp
+        test/test_nng_pubsub.cpp
     )
 
     foreach(src ${TEST_SOURCES})
@@ -59,7 +81,7 @@ if(BUILD_TESTING)
             ${PROJECT_INCLUDE_DIRS}
             ${DOCTEST_INCLUDE_DIR}
         )
-        target_link_libraries(${test_name} PRIVATE network)
+        target_link_libraries(${test_name} PRIVATE network nng)
         add_test(NAME ${test_name} COMMAND ${test_name})
     endforeach()
 endif()
