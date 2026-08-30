@@ -40,7 +40,7 @@ target_include_directories(network PUBLIC
     ${PROJECT_INCLUDE_DIRS}
 )
 
-# ============ 演示程序 ============
+# ============ 主程序 ============
 add_executable(util)
 
 target_sources(util PRIVATE
@@ -50,14 +50,34 @@ target_sources(util PRIVATE
 
 target_link_libraries(util PRIVATE network)
 
+# ============ 演示程序（都在 demo/ 目录，只放演示文件） ============
+
 # nng PUB/SUB 异步事件分发演示（1 发布者 → 2 订阅者）
 add_executable(pubsub_demo)
 
 target_sources(pubsub_demo PRIVATE
-    nng_pubsub_demo.cpp
+    demo/nng_pubsub_demo.cpp
 )
 
 target_link_libraries(pubsub_demo PRIVATE nng)
+
+# nng REQ/REP 同步请求-应答演示（请求方阻塞等结果/错误）
+add_executable(reqrep_demo)
+
+target_sources(reqrep_demo PRIVATE
+    demo/nng_reqrep_demo.cpp
+)
+
+target_link_libraries(reqrep_demo PRIVATE nng)
+
+# nng SURVEY 一对多同步调查演示（广播调查，收集所有应答）
+add_executable(survey_demo)
+
+target_sources(survey_demo PRIVATE
+    demo/nng_survey_demo.cpp
+)
+
+target_link_libraries(survey_demo PRIVATE nng)
 
 # ============ 单元测试（doctest：单头文件，零依赖） ============
 include(CTest)   # 提供 BUILD_TESTING 选项，并集成 ctest
