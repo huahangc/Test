@@ -1,0 +1,155 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="Z-GbS8R0lkIbf1zVsRKI">
+    <mxGraphModel dx="1256" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-4" edge="1" parent="1" source="DBLP3niJVvIKSOyfcWVK-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="DBLP3niJVvIKSOyfcWVK-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="140" />
+            </Array>
+            <mxPoint x="309.5000000000002" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-6" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="调用init函数" vertex="1">
+          <mxGeometry relative="1" x="0.1287" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-13" edge="1" parent="1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="159.66666666666652" y="260" as="sourcePoint" />
+            <mxPoint x="319.5" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-14" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="注册timer" vertex="1">
+          <mxGeometry relative="1" x="0.0532" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-19" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="159.92857142857144" y="370" as="sourcePoint" />
+            <mxPoint x="319.5" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-20" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="run开始运行" vertex="1">
+          <mxGeometry relative="1" x="0.1958" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="time_wheel_start" vertex="1">
+          <mxGeometry height="510" width="100" x="110" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-11" edge="1" parent="1" source="DBLP3niJVvIKSOyfcWVK-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="DBLP3niJVvIKSOyfcWVK-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-12" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="初始化成功" vertex="1">
+          <mxGeometry relative="1" x="0.3222" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-17" edge="1" parent="1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="319.5" y="330" as="sourcePoint" />
+            <mxPoint x="159.92857142857144" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-18" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-17" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="ok" vertex="1">
+          <mxGeometry relative="1" x="-0.2817" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-23" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="319.92857142857133" y="390" as="sourcePoint" />
+            <mxPoint x="499.5" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-24" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-23" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="tick开始运行" vertex="1">
+          <mxGeometry relative="1" x="0.1814" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-7" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="init" vertex="1">
+          <mxGeometry height="510" width="100" x="270" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-31" parent="DBLP3niJVvIKSOyfcWVK-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="45" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-32" edge="1" parent="DBLP3niJVvIKSOyfcWVK-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" target="DBLP3niJVvIKSOyfcWVK-31" value="监听fd">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="380" />
+            </Array>
+            <mxPoint x="50" y="350" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-33" parent="DBLP3niJVvIKSOyfcWVK-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="45" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-34" edge="1" parent="DBLP3niJVvIKSOyfcWVK-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" target="DBLP3niJVvIKSOyfcWVK-33" value="执行代码">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="460" />
+            </Array>
+            <mxPoint x="50" y="430" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;innerLoopWaypoints=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="160" />
+              <mxPoint x="380" y="180" />
+            </Array>
+            <mxPoint x="319.8103448275863" y="160" as="sourcePoint" />
+            <mxPoint x="319.8103448275863" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-9" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="初始化需要的内存信息&lt;div&gt;创建监听epoll fd&lt;/div&gt;&lt;div&gt;创建tick event fd&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4074" y="-1" as="geometry">
+            <mxPoint x="13" y="-21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-15" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;innerLoopWaypoints=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="280.03" />
+              <mxPoint x="370" y="300.03" />
+            </Array>
+            <mxPoint x="319.6666666666665" y="280" as="sourcePoint" />
+            <mxPoint x="319.6666666666665" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-16" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="向内部的bucket&lt;div&gt;注册事件&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4657" as="geometry">
+            <mxPoint x="8" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-22" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="tick thread" vertex="1">
+          <mxGeometry height="510" width="100" x="450" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-25" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;innerLoopWaypoints=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="420" />
+              <mxPoint x="560" y="440" />
+            </Array>
+            <mxPoint x="499.92857142857133" y="420" as="sourcePoint" />
+            <mxPoint x="499.92857142857133" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DBLP3niJVvIKSOyfcWVK-26" connectable="0" parent="DBLP3niJVvIKSOyfcWVK-25" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="每隔1s&lt;div&gt;向监听fd发送消息&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.5003" y="5" as="geometry">
+            <mxPoint x="5" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
