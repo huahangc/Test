@@ -21,6 +21,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)   # 动态库 (.so)
 set(PROJECT_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
 
 # ============ 第三方依赖 ============
+# 线程库（std::thread 需要 -pthread）
+find_package(Threads REQUIRED)
+
 # nng：进程内/跨进程 PUB/SUB 消息库（异步、多发布者/多订阅者）
 include(FetchContent)
 FetchContent_Declare(
@@ -34,6 +37,7 @@ FetchContent_MakeAvailable(nng)
 # ============ 网络协议库（静态库，供可执行程序和测试共同链接） ============
 add_library(network STATIC
     network/l3/ipv6/ipv6.cpp
+    network/common/timer_wheel/timer_wheel.cpp
 )
 
 target_include_directories(network PUBLIC
@@ -48,8 +52,7 @@ target_sources(util PRIVATE
     second.cpp
 )
 
-target_link_libraries(util PRIVATE network)
-
+target_link_libraries(util PRIVATE network Threads::Threads)
 # # ============ 演示程序（都在 demo/ 目录，只放演示文件） ============
 
 # # nng PUB/SUB 异步事件分发演示（1 发布者 → 2 订阅者）
@@ -78,6 +81,15 @@ target_link_libraries(util PRIVATE network)
 # )
 
 # target_link_libraries(survey_demo PRIVATE nng)
+
+# timer wheel测试
+add_executable(timer_demo)
+# 
+target_sources(timer_demo PRIVATE
+    demo/time_wheel_demo.cpp
+)
+# 
+target_link_libraries(timer_demo PRIVATE network)
 
 # ============ 单元测试（doctest：单头文件，零依赖） ============
 include(CTest)   # 提供 BUILD_TESTING 选项，并集成 ctest
