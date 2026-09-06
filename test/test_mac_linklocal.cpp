@@ -1,6 +1,7 @@
 // test/test_mac_linklocal.cpp
-// MacToLinkLocalAddrWithEui64（MAC → EUI-64 link-local）的单元测试（doctest）
+// MacToLinkLocalAddrWithEui64 的单元测试（doctest）
 //
+// 约定：MacAddr / Ipv6Addr 均为字节数组，按显示顺序（线缆序/网络序）存储，无需字节序转换。
 // 推导规则（RFC 4291 §2.5.1 / RFC 2464 §4）：
 //   1. 前缀 fe80::/64（前 8 字节 = fe 80 00 00 00 00 00 00）
 //   2. 接口标识 = MAC 中间插入 0xff 0xfe，并把第一个字节的 U/L 位（掩码 0x02）翻转
@@ -8,8 +9,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
-#include "network/l3/ipv6/ipv6.h"
-#include "network/l2/mac/mac.h"
+#include "network/l3/ipv6/include/ipv6.h"
+#include "network/l2/mac/include/mac.h"
 
 #include <arpa/inet.h>
 

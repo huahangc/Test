@@ -8,6 +8,8 @@
 namespace network::l2::mac {
 
 inline constexpr std::size_t kMacAddrLen = 6;
+
+/// MAC 地址：6 字节数组，按显示顺序（线缆序/网络序）存储，无需字节序转换
 using MacAddr = std::array<std::uint8_t, kMacAddrLen>;
 
 /// 把 MAC 地址格式化为 "aa:bb:cc:dd:ee:ff" 形式

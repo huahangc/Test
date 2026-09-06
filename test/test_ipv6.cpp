@@ -1,6 +1,7 @@
 // test/test_ipv6.cpp
 // Ipv6AddrToString 的单元测试（doctest）
 //
+// 约定：Ipv6Addr 是 16 字节数组，按显示顺序（网络序）存储，无需字节序转换。
 // Ipv6AddrToString 内部封装系统 inet_ntop，输出 RFC 5952 标准格式
 //（压缩 ::、省略前导 0、小写，IPv4 映射地址用点分十进制）。
 //
@@ -11,7 +12,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
-#include "network/l3/ipv6/ipv6.h"
+#include "network/l3/ipv6/include/ipv6.h"
 
 #include <arpa/inet.h>
 
@@ -43,17 +44,17 @@ TEST_CASE("常见地址输出为 RFC 5952 标准格式") {
     CHECK_EQ(Ipv6AddrToString(makeIpv6({0x20, 0x01, 0x0d, 0xb8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1})),
              std::string("2001:db8::1"));
     CHECK_EQ(Ipv6AddrToString(makeIpv6({0x20, 0x01, 0x0d, 0xb8, 0x85, 0xa3, 0, 0, 0, 0,
-                                      0x8a, 0x2e, 0x03, 0x70, 0x73, 0x34})),
+                                        0x8a, 0x2e, 0x03, 0x70, 0x73, 0x34})),
              std::string("2001:db8:85a3::8a2e:370:7334"));
     CHECK_EQ(Ipv6AddrToString(makeIpv6({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff,
-                                      0xc0, 0x00, 0x02, 0x80})),
+                                        0xc0, 0x00, 0x02, 0x80})),
              std::string("::ffff:192.0.2.128"));  // IPv4 映射地址输出点分十进制
     CHECK_EQ(Ipv6AddrToString(makeIpv6({0xfe, 0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1})),
              std::string("fe80::1"));
     CHECK_EQ(Ipv6AddrToString(makeIpv6({0xff, 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1})),
              std::string("ff02::1"));
     CHECK_EQ(Ipv6AddrToString(makeIpv6({0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-                                      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff})),
+                                        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff})),
              std::string("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"));
 }
 
@@ -72,6 +73,6 @@ TEST_CASE("输出长度在合理范围且可 round-trip") {
 
         std::uint8_t parsed[16];
         CHECK_EQ(inet_pton(AF_INET6, s.c_str(), parsed), 1);
-        CHECK(std::memcmp(parsed, a.data(), 16) == 0);
+        CHECK(std::memcmp(parsed, a.data(), 16) == 0);  // round-trip 回原字节
     }
 }

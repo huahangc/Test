@@ -13,7 +13,6 @@
 
 #include <chrono>
 #include <cstring>
-#include <string>
 #include <thread>
 
 namespace {

@@ -1,5 +1,5 @@
-#include "ipv6.h"
-#include "network/l2/mac/mac.h"
+#include "include/ipv6.h"
+#include "network/l2/mac/include/mac.h"
 
 #include <arpa/inet.h>
 
@@ -20,13 +20,12 @@ std::string Ipv6AddrToString(Ipv6Addr addr) {
 
 Ipv6Addr MacToLinkLocalAddrWithEui64(MacAddr macAddr)
 {
-    Ipv6Addr addr {};
-    // link local地址的前两个字节为fe80:xx
+    Ipv6Addr addr{};
+    // link-local 前缀 fe80::/64
     addr[0] = 0xfe;
     addr[1] = 0x80;
-    // 拼接mac地址
-    addr[8] = macAddr[0]; // 该地址的低位第二个Bit需要翻转
-    addr[8] = addr[8] ^ 0x2;
+    // 拼接 MAC，第一字节的 U/L 位（bit1）翻转
+    addr[8] = static_cast<std::uint8_t>(macAddr[0] ^ 0x02);
     addr[9] = macAddr[1];
     addr[10] = macAddr[2];
     addr[11] = 0xff;
@@ -37,4 +36,4 @@ Ipv6Addr MacToLinkLocalAddrWithEui64(MacAddr macAddr)
     return addr;
 }
 
-}
+} // namespace network::l3::ipv6
