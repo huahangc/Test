@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <ctime>
+#include <thread>
 #include "network/common/timer_wheel/include/timer_wheel.h"
 
 using namespace network::common::timer_wheel;
@@ -22,18 +23,23 @@ void print_task(void)
 
 int main(void)
 {
+    std::printf("HUAHANG STARET TIMER DEMO!\n");
     BaseTimerWheel wheel {};
+    // 先注册任务，再启动事件循环
     wheel.StartTimerWheel(10, print_task);
     wheel.StartTimerWheel(5, print_task);
     wheel.StartTimerWheel(3, print_task);
     wheel.StartTimerWheel(9, print_task);
     wheel.StartTimerWheel(10, print_task);
-
     // 12 秒后自动停止整个事件循环
-    wheel.StartTimerWheel(12, [&wheel] {
-        std::cout << "[stopper] 12 秒到，停止时间轮\n";
+    wheel.StartTimerWheel(300, [&wheel] {
+        std::cout << "[stopper] 300 秒到，停止时间轮\n";
         wheel.Stop();
     });
 
-    wheel.Run();   // 阻塞运行事件循环，直到 Stop() 被调用
+    wheel.Run();   // 异步启动事件循环（立即返回）
+
+    // Run() 不阻塞：main 必须自己等待，否则对象析构会把 tick 线程停掉，任务全跑不了
+    // 最长任务 12 秒（stopper），多等 1 秒再退出
+    std::this_thread::sleep_for(std::chrono::seconds(13));
 }

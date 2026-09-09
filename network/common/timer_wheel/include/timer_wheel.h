@@ -14,9 +14,12 @@
 namespace network::common::timer_wheel {
 
 using TD = std::int32_t; // timer descriptor 时间轮描述符
+using TimerCB = std::function<void(void)>;
+using TickTime = std::int32_t;
 using Timer = struct {
     TD td;
-    std::function<void(void)> cb;
+    TimerCB cb;
+    TickTime tickTime;
 };
 
 
@@ -61,12 +64,8 @@ public:
 private:
     /* 时间单位 */
     const std::size_t m_timeUnit;
-    /* 最大运行时间 */
-    const std::size_t m_maxTimeUnit;
     /* 内存桶大小 */
     std::size_t m_bucketSize;
-    /* 当前的时间 */
-    std::atomic<std::size_t> m_curTimeUnit {0};
     /* 当前的td值 */
     std::atomic<std::size_t> m_curTD {1};
     /* list */
@@ -85,6 +84,8 @@ private:
      * @return TD 
      */
     TD getNextTD();
+    void createNeedFd();
     void tick();
+    std::int32_t getCurTick();
 };
 } // namespace network common timer wheel
